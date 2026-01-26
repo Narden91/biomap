@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
     Brain, Network, Zap, Cpu, Activity, Share2,
     GitMerge, Layers, Search, Eye, Users,
@@ -163,22 +163,42 @@ const Home = () => {
         return () => observer.disconnect();
     }, []);
 
+    // Parallax state
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const heroRef = useRef(null);
+
+    const handleMouseMove = (e) => {
+        if (!heroRef.current) return;
+        const rect = heroRef.current.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        setMousePosition({ x, y });
+    };
+
     return (
         <div className="flex flex-col">
-            {/* Hero Section - Full Background */}
+            {/* Hero Section - Full Background with Parallax */}
             <section
+                ref={heroRef}
+                onMouseMove={handleMouseMove}
                 className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden"
-                style={{
-                    backgroundImage: `url(${import.meta.env.BASE_URL}BIOMAP.png)`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat'
-                }}
             >
-                {/* Overlay for better text readability at the bottom if needed - subtle gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-sage-900/80 via-transparent to-transparent pointer-events-none"></div>
+                {/* Parallax Background */}
+                <div
+                    className="absolute inset-0 z-0 transition-transform duration-100 ease-out will-change-transform scale-110"
+                    style={{
+                        backgroundImage: `url(${import.meta.env.BASE_URL}BIOMAP.png)`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`
+                    }}
+                />
 
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 md:py-16">
+                {/* Overlay for better text readability at the bottom if needed - subtle gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-sage-900/80 via-transparent to-transparent pointer-events-none z-10"></div>
+
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-12 md:py-16">
                     {/* Bottom Bar Container */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 glass-panel-strong rounded-3xl p-6 md:p-8 backdrop-blur-xl border-white/20 shadow-2xl animate-fade-up">
 
