@@ -126,9 +126,27 @@ npm run deploy
 
 ## 🌐 Deployment
 
-The site is configured for GitHub Pages deployment with:
-- Base path: `/biomap/`
-- Build output: `dist/`
+### GitHub Pages Setup
+
+This project is pre-configured for deployment to GitHub Pages.
+
+**How to deploy:**
+1. **Push** your latest code to the repository.
+2. **Run** the deploy script:
+   ```bash
+   npm run deploy
+   ```
+   *This command rebuilds the project and pushes the `dist` folder to the `gh-pages` branch.*
+
+**Configuration:**
+- **Base Path**: `/biomap/` (configured in `vite.config.js`)
+- **Homepage**: `https://narden91.github.io/biomap/` (configured in `package.json`)
+
+**First-time Setup:**
+If the command fails, verify:
+- You are authenticated with Git.
+- The `gh-pages` branch exists (if not, the script usually creates it).
+- Under GitHub Repository **Settings > Pages**, the **Source** is set to `gh-pages` branch.
 
 ## 📝 Workshop Topics
 
