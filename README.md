@@ -1,32 +1,42 @@
-# XRP Ledger Platform
+# BIOMAP 2026
 
-A modern React application for XRP Ledger wallet management and payments on the testnet. Built with React 19, Vite, and TailwindCSS, deployable to GitHub Pages.
+> **Bio-Inspired Intelligence for Adaptive Pattern Recognition: From Evolutionary Computing to Self-Organising Vision Systems**
+
+A modern, multi-page React website for the BIOMAP Workshop at a Scientific Conference 2026. Built with React, Vite, and Tailwind CSS, featuring a bio-inspired design aesthetic.
+
+## 🧬 About BIOMAP
+
+The BIOMAP workshop focuses on bio-inspired intelligence as a core approach for future pattern recognition systems, gathering perspectives from:
+- Evolutionary Computation
+- Swarm Intelligence
+- Artificial Life
+- Neuromorphic Computing
 
 ## ✨ Features
 
-### Wallet Management
-- **Create New Wallets**: Generate new XRP wallets with automatic testnet funding
-- **Import Existing Wallets**: Import wallets using seed phrases
-- **Balance Tracking**: Real-time XRP balance monitoring with auto-refresh
+### Multi-Page Architecture
+- **Home**: Workshop overview, motivation, and topics
+- **Committees**: Program Co-Chairs profiles
+- **Invited Speakers**: Keynote information
+- **Schedule**: Event timeline
+- **Important Dates**: Key deadlines
+- **Submission**: Author guidelines
+- **Venue**: Location details
+- **Special Session**: Featured tracks
 
-### Payment Operations
-- **Custom Payments**: Send XRP with custom amounts to any address
-- **Quick Payments**: Pre-configured quick payment options
-- **Transaction History**: Track all your payments with detailed status
-- **Transaction Validation**: Real-time transaction result feedback
-
-### Professional UI/UX
-- **Modern Design**: Beautiful gradient-based interface with glass morphism effects
-- **Responsive Layout**: Mobile-first design that works on all devices
-- **Smooth Animations**: CSS animations and transitions throughout
-- **Interactive Components**: Toast notifications, modals, and loading states
+### Design System
+- **Bio-Inspired Palette**: Soft Sage, Pale Lavender, and Muted Coral
+- **Modern Typography**: Outfit (headings) and Inter (body)
+- **Professional Icons**: lucide-react SVG icons
+- **Flat Design**: Clean, minimal aesthetic without gradients
+- **Responsive**: Mobile-first, works on all devices
 
 ## 🛠 Tech Stack
 
 - **Framework**: React 19 + Vite 7
-- **Styling**: TailwindCSS 4 with custom animations
-- **XRP Library**: xrpl.js 4.4.2 (direct connection to XRP Ledger)
-- **Build Tool**: Vite for lightning-fast HMR
+- **Styling**: Tailwind CSS 4
+- **Routing**: React Router DOM 7
+- **Icons**: Lucide React
 - **Deployment**: GitHub Pages
 
 ## 📋 Prerequisites
@@ -46,7 +56,7 @@ npm install
 npm run dev
 ```
 
-Access the application at http://localhost:5173
+Access the application at http://localhost:5173/biomap/
 
 ### Production Build
 
@@ -68,52 +78,43 @@ npm run deploy
 
 ```
 ├── src/
-│   ├── components/     # React components
-│   │   ├── Header.jsx
-│   │   ├── Dashboard.jsx
-│   │   ├── WalletCard.jsx
-│   │   ├── PaymentModal.jsx
-│   │   └── ...
-│   ├── hooks/          # Custom React hooks
-│   │   ├── useWallet.js      # XRP wallet operations
-│   │   └── useGemWallet.js   # Gem Wallet integration
-│   ├── config/         # Configuration
-│   │   └── constants.js
-│   ├── utils/          # Utility functions
-│   ├── App.jsx         # Main App component
-│   └── index.css       # Global styles
-├── public/             # Static assets
-├── index.html          # HTML entry point
-├── vite.config.js      # Vite configuration
-├── tailwind.config.js  # TailwindCSS configuration
-└── package.json        # Dependencies and scripts
+│   ├── components/      # Reusable UI components
+│   │   ├── Navbar.jsx
+│   │   ├── Footer.jsx
+│   │   └── PageHeader.jsx
+│   ├── layout/          # Layout wrapper
+│   │   └── Layout.jsx
+│   ├── pages/           # Page components
+│   │   ├── Home.jsx
+│   │   ├── Committees.jsx
+│   │   ├── Invited.jsx
+│   │   ├── Schedule.jsx
+│   │   ├── Dates.jsx
+│   │   ├── Submission.jsx
+│   │   ├── Venue.jsx
+│   │   └── SpecialSession.jsx
+│   ├── App.jsx          # Main App with routing
+│   └── index.css        # Global styles & theme
+├── public/              # Static assets
+├── index.html           # HTML entry point
+├── vite.config.js       # Vite configuration
+└── package.json         # Dependencies and scripts
 ```
 
-## 🎨 UI Components
+## 🎨 Design Tokens
 
-- **Header**: Sticky navigation with network status
-- **Footer**: Rich footer with links and branding
-- **WalletCard**: Display wallet info with copy-to-clipboard
-- **ActionsPanel**: Quick actions for payments and wallet management
-- **PaymentModal**: Custom payment form with validation
-- **WalletImportModal**: Import existing wallets securely
-- **TransactionHistory**: Beautiful transaction list
-- **Toast**: Notification system for user feedback
-- **LoadingOverlay**: Full-screen loading states
+### Colors
+- **Sage** (Primary): Bio/Natural elements - `#84A98C`
+- **Lavender** (Secondary): Technology/Neural - `#D8D8F6`
+- **Coral** (Accent): Highlights - `#F4978E`
+- **Canvas** (Background): `#FDFCF8`
+- **Surface** (Cards): `#FFFFFF`
 
-## 🔒 Security Notes
+### Typography
+- **Headings**: Outfit (Google Fonts)
+- **Body**: Inter (Google Fonts)
 
-- This is a **TESTNET** environment - never use real funds
-- Seeds are displayed for development purposes only
-- In production, never expose wallet seeds in the UI
-
-## 🌐 Network Information
-
-- **Network**: XRP Ledger Testnet
-- **WSS Endpoint**: wss://s.altnet.rippletest.net:51233
-- **RPC Endpoint**: https://s.altnet.rippletest.net:51234/
-
-## 📝 Available Scripts
+## 🔧 Available Scripts
 
 | Script | Description |
 |--------|-------------|
@@ -123,19 +124,49 @@ npm run deploy
 | `npm run lint` | Run ESLint |
 | `npm run deploy` | Deploy to GitHub Pages |
 
+## 🌐 Deployment
+
+The site is configured for GitHub Pages deployment with:
+- Base path: `/biomap/`
+- Build output: `dist/`
+
+## 📝 Workshop Topics
+
+The workshop covers 15 main areas including:
+1. Evolutionary neural architecture discovery
+2. Swarm intelligence for distributed patterns
+3. Self-organising and adaptive vision
+4. Artificial life and emergent patterns
+5. Evolutionary multi-objective optimisation
+6. Bio-inspired learning paradigms
+7. Hybrid evolutionary-gradient methods
+8. Neuromorphic evolutionary systems
+9. Collective intelligence for large-scale analysis
+10. Dynamic and online evolutionary adaptation
+11. Evolutionary robotics and embodied vision
+12. Quantum-inspired evolutionary recognition
+13. Evolutionary explainability
+14. Bio-inspired hardware-software co-evolution
+15. Applications and grand challenges
+
+## 👥 Program Co-Chairs
+
+- **Francesco Fontanella** - University of Cassino and Southern Lazio
+- **Leonardo Vanneschi** - NOVA IMS, Universidade Nova de Lisboa
+- **Emanuele Nardone** - University of Cassino and Southern Lazio
+
 ## 🤝 Contributing
 
-Feel free to:
-- Add new features
-- Improve the UI/UX
-- Optimize performance
-- Add tests
-- Enhance documentation
+To update content:
+1. Edit the relevant page component in `src/pages/`
+2. Update placeholder content (Invited, Schedule, Venue)
+3. Add images to `public/` if needed
+4. Rebuild and redeploy
 
 ## 📝 License
 
-Open source - feel free to use for your projects!
+Open source - MIT License
 
 ---
 
-**Built with ❤️ using React and XRP Ledger**
+**Built with bio-inspired principles and modern web technologies** 🧬
