@@ -1,9 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  /* Typography - Distinctive font stack */
+  --font-sans: 'Source Serif 4', Georgia, serif;
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
+  /* Sage palette - refined */
   --color-sage-50: #F4F7F5;
   --color-sage-100: #E3EBE5;
   --color-sage-200: #C5D6C9;
@@ -15,6 +18,7 @@
   --color-sage-800: #233327;
   --color-sage-900: #121A14;
 
+  /* Lavender accent */
   --color-lavender-50: #F9F9FD;
   --color-lavender-100: #F0F0FB;
   --color-lavender-200: #E1E1F9;
@@ -26,6 +30,7 @@
   --color-lavender-800: #33337A;
   --color-lavender-900: #1C1C45;
 
+  /* Coral accent */
   --color-coral-50: #FEF6F5;
   --color-coral-100: #FDEAE9;
   --color-coral-200: #FBD0CD;
@@ -37,6 +42,7 @@
   --color-coral-800: #7D251D;
   --color-coral-900: #531813;
 
+  /* Surface colors */
   --color-canvas: #FDFCF8;
   --color-surface: #FFFFFF;
 }
@@ -46,14 +52,109 @@
     font-family: var(--font-sans);
     background-color: var(--color-canvas);
     color: var(--color-gray-800);
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    font-weight: 700;
+  }
+
+  /* Refined selection */
+  ::selection {
+    background-color: var(--color-sage-200);
+    color: var(--color-sage-900);
+  }
+}
+
+@layer components {
+  /* Hero entrance animation */
+  .hero-title {
+    animation: heroFadeUp 0.8s ease-out forwards;
+  }
+
+  .hero-subtitle {
+    animation: heroFadeUp 0.8s ease-out 0.15s forwards;
+    opacity: 0;
+  }
+
+  .hero-cta {
+    animation: heroFadeUp 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  /* Card hover glow effect */
+  .card-glow {
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .card-glow:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 20px 40px -15px rgba(132, 169, 140, 0.25),
+      0 0 0 1px rgba(132, 169, 140, 0.1);
+  }
+
+  /* Glassmorphism card variant */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  /* Nav link underline animation */
+  .nav-link-animated {
+    position: relative;
+  }
+
+  .nav-link-animated::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-sage-400), var(--color-coral-400));
+    transition: width 0.3s ease, left 0.3s ease;
+    border-radius: 1px;
+  }
+
+  .nav-link-animated:hover::after {
+    width: 100%;
+    left: 0;
+  }
+
+  /* Mono accent for numbers/codes */
+  .font-mono-accent {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum" 1;
+  }
+}
+
+@layer utilities {
+  /* Smooth focus ring */
+  .focus-ring {
+    outline: none;
+  }
+  
+  .focus-ring:focus-visible {
+    box-shadow: 0 0 0 3px rgba(132, 169, 140, 0.4);
+  }
+}
+
+/* Keyframe animations */
+@keyframes heroFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

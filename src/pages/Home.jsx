@@ -2,19 +2,19 @@ import React from 'react';
 import {
     Brain, Network, Zap, Cpu, Activity, Share2,
     GitMerge, Layers, Search, Eye, Users,
-    Database, RefreshCw, Box, Globe
+    Database, RefreshCw, Box, Globe, Dna
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const TopicCard = ({ number, title, content, icon: Icon }) => (
-    <div className="bg-white p-6 rounded-xl border border-sage-100 hover:border-sage-300 shadow-sm hover:shadow-md transition-all duration-300 h-full flex flex-col">
+    <div className="card-glow bg-white p-6 rounded-xl border border-sage-100 hover:border-sage-300 shadow-sm h-full flex flex-col">
         <div className="flex items-start justify-between mb-4">
-            <div className="p-2 bg-sage-50 rounded-lg text-sage-600">
-                <Icon className="h-6 w-6" />
+            <div className="p-2.5 bg-sage-50 rounded-xl text-sage-600">
+                <Icon className="h-6 w-6" strokeWidth={1.5} />
             </div>
-            <span className="text-xs font-semibold text-sage-400 font-mono">#{String(number).padStart(2, '0')}</span>
+            <span className="text-xs font-semibold text-sage-400 font-mono-accent">#{String(number).padStart(2, '0')}</span>
         </div>
-        <h3 className="text-lg font-display font-bold text-gray-900 mb-2">{title}</h3>
+        <h3 className="text-lg font-display font-bold text-gray-900 mb-2 leading-snug">{title}</h3>
         <p className="text-sm text-gray-600 leading-relaxed flex-grow">{content}</p>
     </div>
 );
@@ -111,18 +111,18 @@ const Home = () => {
                         <span className="w-2 h-2 rounded-full bg-coral-400"></span>
                         Workshop at Scientific Conference 2026
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-display font-bold text-sage-900 mb-6 tracking-tight">
+                    <h1 className="hero-title text-5xl md:text-7xl font-display font-extrabold text-sage-900 mb-6 tracking-tight">
                         BIOMAP
                     </h1>
-                    <p className="text-xl md:text-2xl text-sage-600 max-w-3xl mx-auto font-light leading-relaxed">
+                    <p className="hero-subtitle text-xl md:text-2xl text-sage-600 max-w-3xl mx-auto font-light leading-relaxed">
                         Bio-Inspired Intelligence for Adaptive Pattern Recognition: <br className="hidden md:block" />
                         From Evolutionary Computing to Self-Organising Vision Systems
                     </p>
-                    <div className="mt-10 flex justify-center gap-4">
-                        <Link to="/submission" className="px-8 py-3 bg-sage-600 text-white rounded-lg font-semibold hover:bg-sage-700 transition-all shadow-lg shadow-sage-200 hover:shadow-xl">
+                    <div className="hero-cta mt-10 flex justify-center gap-4">
+                        <Link to="/submission" className="focus-ring px-8 py-3.5 bg-sage-600 text-white rounded-xl font-display font-semibold hover:bg-sage-700 transition-all shadow-lg shadow-sage-200/50 hover:shadow-xl hover:shadow-sage-300/40">
                             Submit Paper
                         </Link>
-                        <Link to="/schedule" className="px-8 py-3 bg-white text-sage-700 border border-sage-200 rounded-lg font-semibold hover:bg-sage-50 transition-all">
+                        <Link to="/schedule" className="focus-ring px-8 py-3.5 bg-white text-sage-700 border border-sage-200 rounded-xl font-display font-semibold hover:bg-sage-50 hover:border-sage-300 transition-all">
                             View Schedule
                         </Link>
                     </div>
@@ -189,6 +189,6 @@ const Home = () => {
         </div>
     );
 };
-import { Dna } from 'lucide-react'; // Adding Dna explicitly if not in first import block
+
 
 export default Home;

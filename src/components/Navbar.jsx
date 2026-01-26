@@ -43,9 +43,9 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(link.path)
-                                        ? 'text-sage-800 bg-sage-50'
-                                        : 'text-gray-600 hover:text-sage-600 hover:bg-sage-50/50'
+                                className={`nav-link-animated px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(link.path)
+                                    ? 'text-sage-800 bg-sage-50'
+                                    : 'text-gray-600 hover:text-sage-600'
                                     }`}
                             >
                                 {link.name}
@@ -75,8 +75,8 @@ const Navbar = () => {
                                 to={link.path}
                                 onClick={() => setIsOpen(false)}
                                 className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(link.path)
-                                        ? 'text-sage-800 bg-sage-50'
-                                        : 'text-gray-600 hover:text-sage-600 hover:bg-sage-50/50'
+                                    ? 'text-sage-800 bg-sage-50'
+                                    : 'text-gray-600 hover:text-sage-600 hover:bg-sage-50/50'
                                     }`}
                             >
                                 {link.name}
