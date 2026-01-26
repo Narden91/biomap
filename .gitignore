@@ -1,50 +1,24 @@
-# Dependencies
-node_modules/
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Environment
-.env
-.env.local
-.env.*.local
-*.env
-
-# Build outputs
-dist/
-build/
-*.egg-info/
-.eggs/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-
 # Logs
+logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-logs/
+pnpm-debug.log*
+lerna-debug.log*
 
-# Docker
-.dockerignore
+node_modules
+dist
+dist-ssr
+*.local
 
-# Testing
-.coverage
-htmlcov/
-.pytest_cache/
-.tox/
-
-# Misc
-*.tar.gz
-*.zip
-.cache/
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
