@@ -23,27 +23,30 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-sage-200">
+        <nav className="sticky top-0 z-50 glass-panel border-b border-white/20">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between h-16">
+                <div className="flex justify-between h-24 items-center">
                     <div className="flex items-center">
-                        <Link to="/" className="flex-shrink-0 flex items-center gap-2 group">
-                            <div className="bg-sage-100 p-2 rounded-lg group-hover:bg-sage-200 transition-colors">
-                                <Dna className="h-6 w-6 text-sage-600" />
-                            </div>
-                            <span className="font-display font-bold text-xl text-sage-900 tracking-tight">
-                                BIOMAP<span className="text-sage-500 font-medium">2026</span>
+                        <Link to="/" className="flex-shrink-0 flex items-center gap-4 group">
+                            <img
+                                src={`${import.meta.env.BASE_URL}BIOMAP_logo.png`}
+                                alt="BIOMAP Logo"
+                                className="h-16 w-auto object-contain transition-transform group-hover:scale-105"
+                            />
+                            <span className="font-display font-bold text-2xl text-sage-900 tracking-tight flex flex-col leading-none">
+                                <span>BIOMAP</span>
+                                <span className="text-sm text-sage-600 font-medium tracking-widest">2026</span>
                             </span>
                         </Link>
                     </div>
 
                     {/* Desktop Menu */}
-                    <div className="hidden lg:flex items-center space-x-1">
+                    <div className="hidden lg:flex items-center space-x-2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`nav-link-animated px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${isActive(link.path)
+                                className={`nav-link-animated px-4 py-2 rounded-md text-base font-medium transition-colors duration-200 ${isActive(link.path)
                                     ? 'text-sage-800 bg-sage-50'
                                     : 'text-gray-600 hover:text-sage-600'
                                     }`}

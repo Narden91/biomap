@@ -165,40 +165,49 @@ const Home = () => {
 
     return (
         <div className="flex flex-col">
-            {/* Hero Section - Glassmorphic */}
-            <section className="gradient-mesh noise-overlay py-24 md:py-32 border-b border-white/20 relative overflow-hidden">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                    {/* Badge */}
-                    <div className="hero-title inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel text-sage-700 text-sm font-medium mb-8 shadow-lg">
-                        <span className="w-2 h-2 rounded-full bg-coral-400 animate-pulse"></span>
-                        Workshop at Scientific Conference 2026
-                    </div>
+            {/* Hero Section - Full Background */}
+            <section
+                className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden"
+                style={{
+                    backgroundImage: `url(${import.meta.env.BASE_URL}BIOMAP.png)`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                }}
+            >
+                {/* Overlay for better text readability at the bottom if needed - subtle gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-sage-900/80 via-transparent to-transparent pointer-events-none"></div>
 
-                    {/* Title - Glass Panel */}
-                    <div className="hero-subtitle glass-panel-strong rounded-3xl px-8 md:px-12 py-12 md:py-16 mb-8 max-w-5xl mx-auto shadow-2xl">
-                        <h1 className="text-6xl md:text-8xl font-display font-extrabold text-sage-900 mb-6 tracking-tight">
-                            BIOMAP
-                        </h1>
-                        <p className="text-xl md:text-2xl text-sage-700 max-w-3xl mx-auto font-light leading-relaxed">
-                            Bio-Inspired Intelligence for Adaptive Pattern Recognition: <br className="hidden md:block" />
-                            From Evolutionary Computing to Self-Organising Vision Systems
-                        </p>
-                    </div>
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-12 md:py-16">
+                    {/* Bottom Bar Container */}
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 glass-panel-strong rounded-3xl p-6 md:p-8 backdrop-blur-xl border-white/20 shadow-2xl animate-fade-up">
 
-                    {/* CTAs */}
-                    <div className="hero-cta flex flex-wrap justify-center gap-4">
-                        <Link
-                            to="/submission"
-                            className="focus-ring px-8 py-4 glass-sage rounded-2xl font-display font-semibold text-sage-900 hover:bg-sage-600 hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
-                        >
-                            Submit Paper
-                        </Link>
-                        <Link
-                            to="/schedule"
-                            className="focus-ring px-8 py-4 glass-panel rounded-2xl font-display font-semibold text-sage-700 hover:glass-panel-strong transition-all duration-300 shadow-lg"
-                        >
-                            View Schedule
-                        </Link>
+                        {/* Workshop Badge / Info */}
+                        <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage-50/90 text-sage-800 text-sm font-semibold mb-2 shadow-sm">
+                                <span className="w-2 h-2 rounded-full bg-coral-500 animate-pulse"></span>
+                                Workshop at ICPR 2026
+                            </div>
+                            <h2 className="text-sage-900 font-display font-medium text-lg md:text-xl tracking-wide opacity-90">
+                                Bio-Inspired Intelligence for Pattern Recognition
+                            </h2>
+                        </div>
+
+                        {/* CTAs */}
+                        <div className="flex flex-wrap justify-center gap-4">
+                            <Link
+                                to="/submission"
+                                className="focus-ring px-8 py-3 bg-coral-500 text-white rounded-xl font-display font-semibold hover:bg-coral-600 transition-all duration-300 shadow-lg hover:shadow-coral-500/30 hover:scale-105 active:scale-95"
+                            >
+                                Submit Paper
+                            </Link>
+                            <Link
+                                to="/schedule"
+                                className="focus-ring px-8 py-3 bg-white text-sage-900 rounded-xl font-display font-semibold hover:bg-sage-50 transition-all duration-300 shadow-lg hover:scale-105 active:scale-95"
+                            >
+                                View Schedule
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </section>
