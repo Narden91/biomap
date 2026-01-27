@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import {
     Brain, Network, Zap, Cpu, Activity, Share2,
     GitMerge, Layers, Search, Eye, Users,
@@ -163,35 +163,75 @@ const Home = () => {
         return () => observer.disconnect();
     }, []);
 
-    // Parallax state
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    // Parallax state - using refs for performance (no re-renders)
     const heroRef = useRef(null);
+    const bgRef = useRef(null);
 
-    const handleMouseMove = (e) => {
-        if (!heroRef.current) return;
-        const rect = heroRef.current.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        setMousePosition({ x, y });
-    };
+    useEffect(() => {
+        const hero = heroRef.current;
+        const bg = bgRef.current;
+
+        if (!hero || !bg) return;
+
+        let requestID;
+        let mouseX = 0;
+        let mouseY = 0;
+        let currentX = 0;
+        let currentY = 0;
+
+        // Smooth lerp factor - lower is smoother/slower, higher is snappier
+        const lerp = 0.15;
+
+        const handleMouseMove = (e) => {
+            const rect = hero.getBoundingClientRect();
+            // Calculate normalized coordinates -0.5 to 0.5
+            mouseX = (e.clientX - rect.left) / rect.width - 0.5;
+            mouseY = (e.clientY - rect.top) / rect.height - 0.5;
+        };
+
+        const updateParallax = () => {
+            // Smoothly interpolate current position to target mouse position
+            currentX += (mouseX - currentX) * lerp;
+            currentY += (mouseY - currentY) * lerp;
+
+            if (bg) {
+                // Apply transform directly to DOM element
+                // -20px is the movement range
+                bg.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px)`;
+            }
+
+            requestID = requestAnimationFrame(updateParallax);
+        };
+
+        // Start loop
+        hero.addEventListener('mousemove', handleMouseMove);
+        requestID = requestAnimationFrame(updateParallax);
+
+        return () => {
+            hero.removeEventListener('mousemove', handleMouseMove);
+            cancelAnimationFrame(requestID);
+        };
+    }, []);
 
     return (
         <div className="flex flex-col">
             {/* Hero Section - Full Background with Parallax */}
             <section
                 ref={heroRef}
-                onMouseMove={handleMouseMove}
                 className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden"
             >
                 {/* Parallax Background */}
                 <div
-                    className="absolute inset-0 z-0 transition-transform duration-100 ease-out will-change-transform scale-110"
+                    ref={bgRef}
+                    className="absolute inset-0 z-0 transition-transform duration-100 ease-out scale-110"
                     style={{
                         backgroundImage: `url(${import.meta.env.BASE_URL}BIOMAP.png)`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
-                        transform: `translate(${mousePosition.x * -20}px, ${mousePosition.y * -20}px)`
+                        // Initial transform will be handled by JS, but set good defaults
+                        willChange: 'transform',
+                        transform: 'translate(0px, 0px)'
                     }}
                 />
 
