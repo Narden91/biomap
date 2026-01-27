@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PageHeader from '../components/PageHeader';
 import { CalendarDays } from 'lucide-react';
 
-const DateItem = ({ label, date, status }) => (
+// Memoized date item component
+const DateItem = memo(({ label, date, status }) => (
     <div className="flex items-center justify-between p-6 bg-white rounded-lg border border-sage-100 hover:border-sage-200 transition-colors">
         <div>
             <h3 className="text-lg font-bold text-gray-900">{label}</h3>
@@ -15,7 +16,17 @@ const DateItem = ({ label, date, status }) => (
             </span>
         )}
     </div>
-);
+));
+
+DateItem.displayName = 'DateItem';
+
+// Static data outside component
+const dates = [
+    { label: "Paper Submission Deadline", date: "To be announced", status: "Upcoming" },
+    { label: "Notification of Acceptance", date: "To be announced", status: "Upcoming" },
+    { label: "Camera-Ready Submission", date: "To be announced", status: "Upcoming" },
+    { label: "Workshop Date", date: "2026", status: "Upcoming" }
+];
 
 const Dates = () => {
     return (
@@ -26,10 +37,9 @@ const Dates = () => {
                 icon={CalendarDays}
             />
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 space-y-4">
-                <DateItem label="Paper Submission Deadline" date="To be announced" status="Upcoming" />
-                <DateItem label="Notification of Acceptance" date="To be announced" status="Upcoming" />
-                <DateItem label="Camera-Ready Submission" date="To be announced" status="Upcoming" />
-                <DateItem label="Workshop Date" date="2026" status="Upcoming" />
+                {dates.map((item) => (
+                    <DateItem key={item.label} {...item} />
+                ))}
             </div>
         </div>
     );

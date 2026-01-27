@@ -1,12 +1,12 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, memo, useMemo } from 'react';
 import {
     Brain, Network, Zap, Cpu, Activity, Share2,
     GitMerge, Layers, Search, Eye, Users,
-    Database, RefreshCw, Box, Globe, Dna
+    RefreshCw, Box, Globe, Dna
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-// Bento grid tile sizes configuration
+// Static data moved outside component to avoid recreation on each render
 const bentoSizes = [
     { cols: 5, rows: 2 },  // 1 - large hero
     { cols: 3, rows: 1 },  // 2 - small accent
@@ -25,8 +25,28 @@ const bentoSizes = [
     { cols: 6, rows: 1 },  // 15 - wide
 ];
 
-const TopicTile = ({ number, title, content, icon: Icon, size }) => {
-    const glassVariants = ['glass-panel', 'glass-sage', 'glass-lavender'];
+const glassVariants = ['glass-panel', 'glass-sage', 'glass-lavender'];
+
+const topics = [
+    { title: "Evolutionary neural architecture discovery", content: "Genetic algorithms, genetic programming, and evolution strategies for discovering new structures.", icon: Network },
+    { title: "Swarm intelligence for distributed patterns", content: "Particle swarm optimisation for feature selection; ant colony algorithms for segmentation.", icon: Share2 },
+    { title: "Self-organising and adaptive vision", content: "Adaptive resonance theory for continual learning; self-organising maps for visual clustering.", icon: Activity },
+    { title: "Artificial life and emergent patterns", content: "Evolution of visual behaviours; emergent feature detectors; artificial immune systems.", icon: Dna },
+    { title: "Evolutionary multi-objective optimisation", content: "Pareto-optimal solutions for accuracy-efficiency trade-offs in computer vision.", icon: Layers },
+    { title: "Bio-inspired learning paradigms", content: "Evolutionary few-shot/zero-shot learning; genetic programming for data augmentation.", icon: Brain },
+    { title: "Hybrid evolutionary-gradient methods", content: "Evolutionary initialisation of deep networks; population-based training strategies.", icon: GitMerge },
+    { title: "Neuromorphic evolutionary systems", content: "Evolution of spiking neural networks; bio-plausible learning rules through evolution.", icon: Cpu },
+    { title: "Collective intelligence for large-scale analysis", content: "Distributed evolutionary algorithms for big visual data; federated evolutionary learning.", icon: Users },
+    { title: "Dynamic and online evolutionary adaptation", content: "Real-time evolutionary tracking; adaptive evolution in non-stationary environments.", icon: RefreshCw },
+    { title: "Evolutionary robotics and embodied vision", content: "Co-evolution of morphology and visual processing; evolutionary active vision strategies.", icon: Eye },
+    { title: "Quantum-inspired evolutionary recognition", content: "Quantum evolutionary algorithms for feature selection; quantum swarm optimisation.", icon: Zap },
+    { title: "Evolutionary explainability", content: "Genetic programming for interpretable models; evolutionary visualisation of decision boundaries.", icon: Search },
+    { title: "Bio-inspired hardware-software co-evolution", content: "Evolutionary design of vision processors; DNA computing for pattern matching.", icon: Box },
+    { title: "Applications and grand challenges", content: "Medical imaging, autonomous driving, remote sensing, biometrics, and industrial inspection.", icon: Globe },
+];
+
+// Memoized tile component - prevents re-render when parent updates
+const TopicTile = memo(({ number, title, content, icon: Icon, size }) => {
     const glassClass = glassVariants[number % 3];
 
     return (
@@ -37,10 +57,7 @@ const TopicTile = ({ number, title, content, icon: Icon, size }) => {
                 gridRow: `span ${size.rows}`,
             }}
         >
-            {/* Large icon background */}
             <Icon className="bento-icon-bg" strokeWidth={0.5} />
-
-            {/* Content */}
             <div className="relative z-10 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                     <div className="p-2.5 bg-white/40 rounded-xl backdrop-blur-sm">
@@ -50,101 +67,25 @@ const TopicTile = ({ number, title, content, icon: Icon, size }) => {
                         #{String(number).padStart(2, '0')}
                     </span>
                 </div>
-
                 <h3 className="text-base font-display font-bold text-gray-900 mb-2 leading-tight">
                     {title}
                 </h3>
-
                 <p className="text-sm text-gray-700/90 leading-relaxed flex-grow">
                     {content}
                 </p>
             </div>
         </div>
     );
-};
+});
+
+TopicTile.displayName = 'TopicTile';
 
 const Home = () => {
     const topicsRef = useRef(null);
+    const heroRef = useRef(null);
+    const bgRef = useRef(null);
 
-    const topics = [
-        {
-            title: "Evolutionary neural architecture discovery",
-            content: "Genetic algorithms, genetic programming, and evolution strategies for discovering new structures.",
-            icon: Network
-        },
-        {
-            title: "Swarm intelligence for distributed patterns",
-            content: "Particle swarm optimisation for feature selection; ant colony algorithms for segmentation.",
-            icon: Share2
-        },
-        {
-            title: "Self-organising and adaptive vision",
-            content: "Adaptive resonance theory for continual learning; self-organising maps for visual clustering.",
-            icon: Activity
-        },
-        {
-            title: "Artificial life and emergent patterns",
-            content: "Evolution of visual behaviours; emergent feature detectors; artificial immune systems.",
-            icon: Dna
-        },
-        {
-            title: "Evolutionary multi-objective optimisation",
-            content: "Pareto-optimal solutions for accuracy-efficiency trade-offs in computer vision.",
-            icon: Layers
-        },
-        {
-            title: "Bio-inspired learning paradigms",
-            content: "Evolutionary few-shot/zero-shot learning; genetic programming for data augmentation.",
-            icon: Brain
-        },
-        {
-            title: "Hybrid evolutionary-gradient methods",
-            content: "Evolutionary initialisation of deep networks; population-based training strategies.",
-            icon: GitMerge
-        },
-        {
-            title: "Neuromorphic evolutionary systems",
-            content: "Evolution of spiking neural networks; bio-plausible learning rules through evolution.",
-            icon: Cpu
-        },
-        {
-            title: "Collective intelligence for large-scale analysis",
-            content: "Distributed evolutionary algorithms for big visual data; federated evolutionary learning.",
-            icon: Users
-        },
-        {
-            title: "Dynamic and online evolutionary adaptation",
-            content: "Real-time evolutionary tracking; adaptive evolution in non-stationary environments.",
-            icon: RefreshCw
-        },
-        {
-            title: "Evolutionary robotics and embodied vision",
-            content: "Co-evolution of morphology and visual processing; evolutionary active vision strategies.",
-            icon: Eye
-        },
-        {
-            title: "Quantum-inspired evolutionary recognition",
-            content: "Quantum evolutionary algorithms for feature selection; quantum swarm optimisation.",
-            icon: Zap
-        },
-        {
-            title: "Evolutionary explainability",
-            content: "Genetic programming for interpretable models; evolutionary visualisation of decision boundaries.",
-            icon: Search
-        },
-        {
-            title: "Bio-inspired hardware-software co-evolution",
-            content: "Evolutionary design of vision processors; DNA computing for pattern matching.",
-            icon: Box
-        },
-        {
-            title: "Applications and grand challenges",
-            content: "Medical imaging, autonomous driving, remote sensing, biometrics, and industrial inspection.",
-            icon: Globe
-        },
-    ];
-
-    // Scroll reveal effect
+    // Scroll reveal effect - with passive listener
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -163,10 +104,7 @@ const Home = () => {
         return () => observer.disconnect();
     }, []);
 
-    // Parallax state - using refs for performance (no re-renders)
-    const heroRef = useRef(null);
-    const bgRef = useRef(null);
-
+    // Parallax effect - optimized with passive listener
     useEffect(() => {
         const hero = heroRef.current;
         const bg = bgRef.current;
@@ -178,33 +116,26 @@ const Home = () => {
         let mouseY = 0;
         let currentX = 0;
         let currentY = 0;
-
-        // Smooth lerp factor - lower is smoother/slower, higher is snappier
         const lerp = 0.15;
 
         const handleMouseMove = (e) => {
             const rect = hero.getBoundingClientRect();
-            // Calculate normalized coordinates -0.5 to 0.5
             mouseX = (e.clientX - rect.left) / rect.width - 0.5;
             mouseY = (e.clientY - rect.top) / rect.height - 0.5;
         };
 
         const updateParallax = () => {
-            // Smoothly interpolate current position to target mouse position
             currentX += (mouseX - currentX) * lerp;
             currentY += (mouseY - currentY) * lerp;
 
             if (bg) {
-                // Apply transform directly to DOM element
-                // -20px is the movement range
                 bg.style.transform = `translate(${currentX * -20}px, ${currentY * -20}px)`;
             }
 
             requestID = requestAnimationFrame(updateParallax);
         };
 
-        // Start loop
-        hero.addEventListener('mousemove', handleMouseMove);
+        hero.addEventListener('mousemove', handleMouseMove, { passive: true });
         requestID = requestAnimationFrame(updateParallax);
 
         return () => {
@@ -213,39 +144,47 @@ const Home = () => {
         };
     }, []);
 
+    // Memoize topic tiles to prevent recreation
+    const topicTiles = useMemo(() =>
+        topics.map((topic, index) => (
+            <TopicTile
+                key={topic.title}
+                number={index + 1}
+                title={topic.title}
+                content={topic.content}
+                icon={topic.icon}
+                size={bentoSizes[index]}
+            />
+        )),
+        []);
+
     return (
         <div className="flex flex-col">
-            {/* Hero Section - Full Background with Parallax */}
+            {/* Hero Section */}
             <section
                 ref={heroRef}
                 className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden"
             >
-                {/* Parallax Background */}
                 <div
                     ref={bgRef}
-                    className="absolute inset-0 z-0 transition-transform duration-100 ease-out scale-110"
+                    className="absolute inset-0 z-0 scale-110"
                     style={{
                         backgroundImage: `url(${import.meta.env.BASE_URL}BIOMAP.png)`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
-                        // Initial transform will be handled by JS, but set good defaults
                         willChange: 'transform',
                         transform: 'translate(0px, 0px)'
                     }}
                 />
 
-                {/* Overlay for better text readability at the bottom if needed - subtle gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-sage-900/80 via-transparent to-transparent pointer-events-none z-10"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-sage-900/80 via-transparent to-transparent pointer-events-none z-10" />
 
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-12 md:py-16">
-                    {/* Bottom Bar Container */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 glass-panel-strong rounded-3xl p-6 md:p-8 backdrop-blur-xl border-white/20 shadow-2xl animate-fade-up">
-
-                        {/* Workshop Badge / Info */}
                         <div className="flex flex-col items-center md:items-start text-center md:text-left">
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage-50/90 text-sage-800 text-sm font-semibold mb-2 shadow-sm">
-                                <span className="w-2 h-2 rounded-full bg-coral-500 animate-pulse"></span>
+                                <span className="w-2 h-2 rounded-full bg-coral-500 animate-pulse" />
                                 Workshop at ICPR 2026
                             </div>
                             <h2 className="text-sage-900 font-display font-medium text-lg md:text-xl tracking-wide opacity-90">
@@ -253,7 +192,6 @@ const Home = () => {
                             </h2>
                         </div>
 
-                        {/* CTAs */}
                         <div className="flex flex-wrap justify-center gap-4">
                             <Link
                                 to="/submission"
@@ -272,12 +210,12 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Motivation Section - Floating Glass */}
+            {/* Motivation Section */}
             <section className="py-24 bg-canvas relative">
                 <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center mb-12 scroll-reveal">
                         <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Motivation & Rationale</h2>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-sage-400 to-coral-400 mx-auto rounded-full"></div>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-sage-400 to-coral-400 mx-auto rounded-full" />
                     </div>
 
                     <div className="glass-panel-strong rounded-3xl p-8 md:p-12 shadow-2xl scroll-reveal">
@@ -310,7 +248,7 @@ const Home = () => {
                 </div>
             </section>
 
-            {/* Topics Section - Bento Grid */}
+            {/* Topics Section */}
             <section className="py-24 gradient-mesh border-t border-white/20 relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                     <div className="text-center mb-16 scroll-reveal">
@@ -321,16 +259,7 @@ const Home = () => {
                     </div>
 
                     <div className="bento-grid" ref={topicsRef}>
-                        {topics.map((topic, index) => (
-                            <TopicTile
-                                key={index}
-                                number={index + 1}
-                                title={topic.title}
-                                content={topic.content}
-                                icon={topic.icon}
-                                size={bentoSizes[index]}
-                            />
-                        ))}
+                        {topicTiles}
                     </div>
                 </div>
             </section>
