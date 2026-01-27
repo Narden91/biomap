@@ -85,17 +85,23 @@ const Home = () => {
     const heroRef = useRef(null);
     const bgRef = useRef(null);
 
-    // Scroll reveal effect - with passive listener
+    // Scroll reveal effect - tiles reveal individually as they enter viewport
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
+                        // Add revealed class with a small delay based on element position
                         entry.target.classList.add('revealed');
+                        // Stop observing once revealed
+                        observer.unobserve(entry.target);
                     }
                 });
             },
-            { threshold: 0.1 }
+            {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px' // Trigger slightly before fully in view
+            }
         );
 
         const elements = document.querySelectorAll('.scroll-reveal');
