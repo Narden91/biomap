@@ -3,15 +3,8 @@
  */
 
 export const APP_CONFIG = {
-  name: import.meta.env.VITE_APP_NAME || 'XRP Ledger Platform',
+  name: import.meta.env.VITE_APP_NAME || 'Biomap',
   version: '1.0.0',
-  network: import.meta.env.VITE_NETWORK || 'testnet',
-}
-
-export const XRP_CONFIG = {
-  testnetWSS: 'wss://s.altnet.rippletest.net:51233',
-  testnetRPC: 'https://s.altnet.rippletest.net:51234/',
-  faucetAddress: 'rPEPPER7kfTD9w2To4CQk6UCfuHM9c6GDY',
 }
 
 export const UI_CONFIG = {
@@ -22,7 +15,11 @@ export const UI_CONFIG = {
 
 export const ROUTES = {
   home: '/',
-  dashboard: '/dashboard',
-  transactions: '/transactions',
-  docs: '/docs',
+  committees: '/committees',
+  invited: '/invited',
+  schedule: '/schedule',
+  dates: '/dates',
+  submission: '/submission',
+  venue: '/venue',
+  specialSession: '/special-session',
 }
