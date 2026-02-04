@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-sage-900 text-sage-50 border-t border-sage-800 relative noise-overlay">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16">
+        <div className="flex flex-col md:flex-row md:justify-between gap-12">
           <div>
             <h3 className="text-xl font-display font-bold text-white mb-4">BIOMAP</h3>
             <p className="text-sage-200 text-sm leading-relaxed max-w-xs">
