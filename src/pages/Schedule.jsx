@@ -13,8 +13,8 @@ const Schedule = () => {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
                 <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-sage-100 shadow-xl">
                     {/* Key Schedule Section */}
+                    {/* Key Schedule Section */}
                     <div className="mb-16">
-                        <h2 className="text-3xl font-display font-bold text-sage-900 mb-10">Key Schedule</h2>
                         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
 
                             {/* Workshop Date Card */}
@@ -33,30 +33,32 @@ const Schedule = () => {
                             </div>
 
                             {/* Conference Context Card */}
-                            <div className="relative group overflow-hidden bg-sage-900 text-white rounded-2xl p-8 border border-sage-800 shadow-md hover:shadow-xl transition-all duration-300 md:col-span-2">
+                            <div className="relative group overflow-hidden bg-sage-900 text-white rounded-2xl p-8 border border-sage-800 shadow-md hover:shadow-xl transition-all duration-300 md:col-span-2 flex flex-col justify-center">
                                 <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
                                     <MapPin className="w-32 h-32 text-white" />
                                 </div>
-                                <div className="relative z-10 text-left">
-                                    <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-sage-300 group-hover:scale-110 transition-transform duration-300">
-                                        <MapPin className="w-6 h-6" />
+                                <div className="relative z-10 text-left flex flex-col md:flex-row gap-8 items-start md:items-center">
+                                    <div className="flex-shrink-0">
+                                        <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-sage-300 group-hover:scale-110 transition-transform duration-300">
+                                            <MapPin className="w-6 h-6" />
+                                        </div>
                                     </div>
-                                    <h3 className="text-xl font-bold text-white mb-4">Conference Context</h3>
-                                    <div className="space-y-2">
-                                        <p className="text-lg text-sage-100">
-                                            Held in conjunction with <strong className="text-white">ICPR 2026</strong>
-                                        </p>
-                                        <p className="text-sage-300">
-                                            28th International Conference on Pattern Recognition
-                                        </p>
-                                        <div className="pt-4 flex flex-col sm:flex-row gap-6 mt-4 border-t border-sage-800/50">
+
+                                    <div className="flex-grow space-y-3">
+                                        <div>
+                                            <h3 className="text-lg font-medium text-sage-300 uppercase tracking-wider text-sm mb-1">Held in Conjunction With</h3>
+                                            <p className="text-2xl font-bold text-white">ICPR 2026</p>
+                                            <p className="text-sage-200 text-lg">28th International Conference on Pattern Recognition</p>
+                                        </div>
+
+                                        <div className="flex flex-col sm:flex-row gap-6 pt-2">
                                             <div>
                                                 <span className="block text-xs uppercase tracking-wider text-sage-400 mb-1">City</span>
-                                                <span className="text-lg font-semibold">Lyon, France</span>
+                                                <span className="text-base font-semibold text-white">Lyon, France</span>
                                             </div>
                                             <div>
                                                 <span className="block text-xs uppercase tracking-wider text-sage-400 mb-1">Venue</span>
-                                                <span className="text-lg font-semibold">International Convention Center</span>
+                                                <span className="text-base font-semibold text-white">International Convention Center</span>
                                             </div>
                                         </div>
                                     </div>
