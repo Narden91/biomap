@@ -58,8 +58,19 @@ const Footer = () => {
             <div className="group flex items-center justify-center">
               <div className="glass-sage rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-sage-500/20">
                 <img
-                  src="/biomap/IAPR_logo.png"
+                  src="/biomap/IAPR_logo.bmp"
                   alt="International Association for Pattern Recognition"
+                  className="h-24 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
+                />
+              </div>
+            </div>
+
+            {/* IAPR 50th Logo */}
+            <div className="group flex items-center justify-center">
+              <div className="glass-sage rounded-xl p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-sage-500/20">
+                <img
+                  src="/biomap/IAPR_50th_Logo.png"
+                  alt="IAPR 50th Anniversary"
                   className="h-24 w-auto object-contain opacity-90 group-hover:opacity-100 transition-opacity"
                 />
               </div>
