@@ -12,7 +12,9 @@ const Invited = () => {
             />
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 text-center">
                 <div className="bg-white rounded-xl p-12 border border-sage-100 border-dashed">
-                    <p className="text-sage-500 text-lg">Detailed information about invited speakers will be announced soon.</p>
+                    <p className="text-sage-500 text-lg mb-8">Detailed information about invited speakers will be announced soon.</p>
+
+
                 </div>
             </div>
         </div>

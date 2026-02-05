@@ -25,7 +25,7 @@ const dates = [
     { label: "Paper Submission Deadline", date: "To be announced", status: "Upcoming" },
     { label: "Notification of Acceptance", date: "To be announced", status: "Upcoming" },
     { label: "Camera-Ready Submission", date: "To be announced", status: "Upcoming" },
-    { label: "Workshop Date", date: "2026", status: "Upcoming" }
+    { label: "Workshop Date", date: "August 22, 2026", status: "Upcoming" }
 ];
 
 const Dates = () => {
