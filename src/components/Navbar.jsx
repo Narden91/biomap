@@ -14,7 +14,7 @@ const Navbar = () => {
         { name: 'Dates', path: '/dates' },
         { name: 'Submission', path: '/submission' },
         { name: 'Venue', path: '/venue' },
-        { name: 'Special Session', path: '/special-session' },
+        { name: 'Program', path: '/special-session' },
     ];
 
     const isActive = (path) => {
