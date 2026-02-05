@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './layout/Layout';
 
 // Lazy load all pages for code splitting
@@ -21,7 +21,7 @@ const PageLoader = () => (
 
 function App() {
   return (
-    <Router basename="/biomap/">
+    <Router>
       <Suspense fallback={<PageLoader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
