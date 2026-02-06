@@ -99,6 +99,20 @@ const Committees = () => {
                     <OrganizerCard key={org.name} {...org} />
                 ))}
             </div>
+
+            {/* Workshop Program Committee Section */}
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+                <div className="mb-8">
+                    <h2 className="text-3xl font-display font-bold text-gray-900 mb-2">Workshop Program Committee</h2>
+                    <div className="w-24 h-1.5 bg-gradient-to-r from-sage-400 to-coral-400 rounded-full"></div>
+                </div>
+
+                <div className="bg-white rounded-2xl p-8 border border-sage-100 shadow-sm">
+                    <p className="text-gray-500 text-center text-lg italic">
+                        Committee members to be announced
+                    </p>
+                </div>
+            </div>
         </div>
     );
 };
