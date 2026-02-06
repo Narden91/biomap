@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, memo, useMemo } from 'react';
+import { useEffect, useRef, memo, useMemo } from 'react';
 import {
     Brain, Network, Zap, Cpu, Activity, Share2,
     GitMerge, Layers, Search, Eye, Users,
@@ -46,22 +46,23 @@ const topics = [
 ];
 
 // Memoized tile component - prevents re-render when parent updates
-const TopicTile = memo(({ number, title, content, icon: Icon, size }) => {
+// eslint-disable-next-line no-unused-vars
+const TopicTile = memo(({ number, title, content, icon: IconComp, size }) => {
     const glassClass = glassVariants[number % 3];
 
     return (
         <div
-            className={`bento-tile ${glassClass} scroll-reveal`}
+            className={`bento-tile ${glassClass} scroll-reveal rounded-[2rem] hover:shadow-xl transition-all duration-500`}
             style={{
                 gridColumn: `span ${size.cols}`,
                 gridRow: `span ${size.rows}`,
             }}
         >
-            <Icon className="bento-icon-bg" strokeWidth={0.5} />
+            <IconComp className="bento-icon-bg" strokeWidth={0.5} />
             <div className="relative z-10 h-full flex flex-col">
                 <div className="flex items-start justify-between mb-3">
                     <div className="p-2.5 bg-white/40 rounded-xl backdrop-blur-sm">
-                        <Icon className="h-5 w-5 text-sage-700" strokeWidth={1.8} />
+                        <IconComp className="h-5 w-5 text-sage-700" strokeWidth={1.8} />
                     </div>
                     <span className="text-xs font-semibold text-sage-500/80 font-mono-accent px-2.5 py-1 bg-white/30 rounded-full backdrop-blur-sm">
                         #{String(number).padStart(2, '0')}
@@ -84,6 +85,25 @@ const Home = () => {
     const topicsRef = useRef(null);
     const heroRef = useRef(null);
     const bgRef = useRef(null);
+
+    // SEO: Set Title and Description
+    useEffect(() => {
+        document.title = "BIOMAP Workshop | ICPR 2026";
+
+        // Update or create meta description
+        let metaDesc = document.querySelector("meta[name='description']");
+        if (!metaDesc) {
+            metaDesc = document.createElement("meta");
+            metaDesc.name = "description";
+            document.head.appendChild(metaDesc);
+        }
+        metaDesc.content = "BIO-inspired Methods for Pattern Recognition Workshop at ICPR 2026. Exploring evolutionary computation, swarm intelligence, and neuromorphic systems.";
+
+        return () => {
+            // Cleanup if needed (optional, effectively resetting is hard without a store)
+            document.title = "BIOMAP - ICPR 2026"; // Fallback
+        };
+    }, []);
 
     // Scroll reveal effect - tiles reveal individually as they enter viewport
     useEffect(() => {
@@ -146,7 +166,7 @@ const Home = () => {
 
         return () => {
             hero.removeEventListener('mousemove', handleMouseMove);
-            cancelAnimationFrame(requestID);
+            if (requestID) cancelAnimationFrame(requestID);
         };
     }, []);
 
@@ -218,21 +238,29 @@ const Home = () => {
                             >
                                 Call for Paper
                             </a>
+                            {/* Verified secure external link example (if added in future) */}
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* Motivation Section */}
-            <section className="py-24 bg-canvas relative">
-                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="text-center mb-12 scroll-reveal">
-                        <h2 className="text-4xl font-display font-bold text-gray-900 mb-4">Motivation & Rationale</h2>
-                        <div className="w-24 h-1.5 bg-gradient-to-r from-sage-400 to-coral-400 mx-auto rounded-full" />
+            {/* Motivation Section - Enhanced Organic Feel */}
+            <section className="py-24 bg-canvas relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white to-transparent opacity-80 z-10"></div>
+
+                <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+                    <div className="text-center mb-16 scroll-reveal">
+                        <div className="inline-flex items-center justify-center p-3 mb-6 bg-sage-50 rounded-full shadow-inner">
+                            <Dna className="w-8 h-8 text-sage-600 animate-pulse-slow" strokeWidth={1.5} />
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-display font-bold text-sage-900 mb-6 tracking-tight">
+                            Motivation & Rationale
+                        </h2>
+                        <div className="w-24 h-1.5 bg-gradient-to-r from-sage-400 to-coral-400 mx-auto rounded-full opacity-80" />
                     </div>
 
-                    <div className="glass-panel-strong rounded-3xl p-8 md:p-12 shadow-2xl scroll-reveal">
-                        <div className="prose prose-lg max-w-none text-gray-700">
+                    <div className="glass-panel-strong rounded-[2.5rem] p-8 md:p-14 shadow-2xl scroll-reveal border border-white/40 ring-1 ring-sage-100/50">
+                        <div className="prose prose-lg md:prose-xl max-w-none text-gray-700 font-sans leading-relaxed">
                             <p className="mb-6 leading-relaxed">
                                 Pattern recognition systems in nature show strong abilities through evolutionary adaptation and self-organisation,
                                 from the visual cortex's layered feature learning to the group behaviour of swarm organisms. This has led to a
