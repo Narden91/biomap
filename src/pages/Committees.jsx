@@ -90,7 +90,7 @@ const Committees = () => {
         <div className="pb-20">
             <PageHeader
                 title="Committees"
-                subtitle="Meet the Program Co-Chairs leading the BIOMAP Workshop."
+                subtitle="Workshop Chairs leading BIOMAP 2026."
                 icon={Users}
             />
 

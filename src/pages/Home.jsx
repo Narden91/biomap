@@ -189,7 +189,7 @@ const Home = () => {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full py-12 md:py-16">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-12 glass-panel-strong rounded-3xl p-6 md:p-8 backdrop-blur-xl border-white/20 shadow-2xl animate-fade-up">
                         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage-50/90 text-sage-800 text-sm font-semibold mb-2 shadow-sm">
+                            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-sage-50/90 text-sage-800 text-sm font-semibold mb-6 shadow-sm">
                                 <span className="w-2 h-2 rounded-full bg-coral-500 animate-pulse" />
                                 Workshop at ICPR 2026
                             </div>
@@ -211,6 +211,13 @@ const Home = () => {
                             >
                                 View Schedule
                             </Link>
+                            <a
+                                href={import.meta.env.BASE_URL + 'CFP_BIOMAP.pdf'}
+                                download
+                                className="focus-ring px-8 py-3 bg-sage-600 text-white rounded-xl font-display font-semibold hover:bg-sage-700 transition-all duration-300 shadow-lg hover:shadow-sage-600/30 hover:scale-105 active:scale-95"
+                            >
+                                Call for Paper
+                            </a>
                         </div>
                     </div>
                 </div>
