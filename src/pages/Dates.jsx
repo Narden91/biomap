@@ -22,10 +22,10 @@ DateItem.displayName = 'DateItem';
 
 // Static data outside component
 const dates = [
-    { label: "Paper Submission Deadline", date: "To be announced", status: "Upcoming" },
-    { label: "Notification of Acceptance", date: "To be announced", status: "Upcoming" },
-    { label: "Camera-Ready Submission", date: "To be announced", status: "Upcoming" },
-    { label: "Workshop Date", date: "August 22, 2026", status: "Upcoming" }
+    { label: "Paper Submission Deadline", date: "May 1, 2026" },
+    { label: "Notification of Acceptance", date: "June 10, 2026" },
+    { label: "Camera-Ready Submission", date: "June 18, 2026 (strict deadline)" },
+    { label: "Workshop Date", date: "August 22, 2026" }
 ];
 
 const Dates = () => {
