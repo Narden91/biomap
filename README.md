@@ -1,12 +1,12 @@
 # BIOMAP 2026
 
-> **Bio-Inspired Intelligence for Adaptive Pattern Recognition: From Evolutionary Computing to Self-Organising Vision Systems**
+>> **BIO-inspired Methods for Pattern Recognition: From Evolutionary Computing to Self-Organising Vision Systems**
 
 A modern, multi-page React website for the BIOMAP Workshop at a Scientific Conference 2026. Built with React, Vite, and Tailwind CSS, featuring a bio-inspired design aesthetic.
 
 ## 🧬 About BIOMAP
 
-The BIOMAP workshop focuses on bio-inspired intelligence as a core approach for future pattern recognition systems, gathering perspectives from:
+The BIOMAP workshop focuses on bio-inspired methods as a core approach for future pattern recognition systems, gathering perspectives from:
 - Evolutionary Computation
 - Swarm Intelligence
 - Artificial Life

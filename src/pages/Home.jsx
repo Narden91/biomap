@@ -194,7 +194,7 @@ const Home = () => {
                                 Workshop at ICPR 2026
                             </div>
                             <h2 className="text-sage-900 font-display font-medium text-lg md:text-xl tracking-wide opacity-90">
-                                Bio-Inspired Intelligence for Pattern Recognition
+                                BIO-inspired Methods for Pattern Recognition
                             </h2>
                         </div>
 

@@ -61,8 +61,15 @@ const Submission = () => {
 
                     <div className="mt-8 pt-8 border-t border-sage-100">
                         <a href="#" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sage-600 hover:bg-sage-700 md:py-4 md:text-lg md:px-10 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200">
-                            Submit via CMT/EasyChair
+                            Submit via CMT
                         </a>
+
+                        {/* CMT Acknowledgement */}
+                        <div className="mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                            <p className="text-xs text-gray-600 leading-relaxed">
+                                <strong>Acknowledgement:</strong> The Microsoft CMT service was used for managing the peer-reviewing process for this conference. This service was provided for free by Microsoft and they bore all expenses, including costs for Azure cloud services as well as for software development and support.
+                            </p>
+                        </div>
                     </div>
                 </div>
 

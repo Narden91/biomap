@@ -1,20 +1,27 @@
 import React, { memo } from 'react';
 import PageHeader from '../components/PageHeader';
-import { CalendarDays } from 'lucide-react';
+import { CalendarDays, Calendar, Bell, FileCheck, CalendarCheck } from 'lucide-react';
 
-// Memoized date item component
-const DateItem = memo(({ label, date, status }) => (
-    <div className="flex items-center justify-between p-6 bg-white rounded-lg border border-sage-100 hover:border-sage-200 transition-colors">
-        <div>
-            <h3 className="text-lg font-bold text-gray-900">{label}</h3>
-            <p className="text-sage-500 font-medium mt-1">{date}</p>
+// Memoized date item component with enhanced visual design
+const DateItem = memo(({ label, date, icon: Icon }) => (
+    <div className="group relative overflow-hidden bg-gradient-to-br from-white to-sage-50/30 rounded-2xl p-8 border-2 border-sage-200 hover:border-coral-400 transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-1">
+        {/* Icon background decoration */}
+        <div className="absolute top-0 right-0 w-32 h-32 -mr-8 -mt-8 opacity-5 group-hover:opacity-10 transition-opacity">
+            <Icon className="w-full h-full" strokeWidth={1} />
         </div>
-        {status && (
-            <span className={`px-3 py-1 rounded-full text-xs font-semibold ${status === 'Upcoming' ? 'bg-coral-50 text-coral-600' : 'bg-gray-100 text-gray-500'
-                }`}>
-                {status}
-            </span>
-        )}
+
+        <div className="relative flex items-center gap-6">
+            {/* Icon */}
+            <div className="flex-shrink-0 p-4 bg-gradient-to-br from-coral-500 to-coral-600 rounded-2xl shadow-lg group-hover:scale-110 transition-transform">
+                <Icon className="h-8 w-8 text-white" strokeWidth={2} />
+            </div>
+
+            {/* Content */}
+            <div className="flex-grow">
+                <h3 className="text-xl font-display font-bold text-gray-900 mb-2">{label}</h3>
+                <p className="text-2xl font-bold text-coral-600">{date}</p>
+            </div>
+        </div>
     </div>
 ));
 
@@ -22,10 +29,10 @@ DateItem.displayName = 'DateItem';
 
 // Static data outside component
 const dates = [
-    { label: "Paper Submission Deadline", date: "May 1, 2026" },
-    { label: "Notification of Acceptance", date: "June 10, 2026" },
-    { label: "Camera-Ready Submission", date: "June 18, 2026 (strict deadline)" },
-    { label: "Workshop Date", date: "August 22, 2026" }
+    { label: "Paper Submission Deadline", date: "May 1, 2026", icon: FileCheck },
+    { label: "Notification of Acceptance", date: "June 10, 2026", icon: Bell },
+    { label: "Camera-Ready Submission", date: "June 18, 2026 (strict deadline)", icon: CalendarCheck },
+    { label: "Workshop Date", date: "August 22, 2026", icon: Calendar }
 ];
 
 const Dates = () => {
