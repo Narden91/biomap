@@ -24,3 +24,12 @@ dist-ssr
 *.sw?
 .agent
 .github/skills
+
+# LaTeX
+*.aux
+*.out
+*.synctex
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.pdf
