@@ -54,8 +54,8 @@ const TopicTile = memo(({ number, title, content, icon: IconComp, size }) => {
         <div
             className={`bento-tile ${glassClass} scroll-reveal rounded-[2rem] hover:shadow-xl transition-all duration-500`}
             style={{
-                gridColumn: `span ${size.cols}`,
-                gridRow: `span ${size.rows}`,
+                '--col-span': size.cols,
+                '--row-span': size.rows,
             }}
         >
             <IconComp className="bento-icon-bg" strokeWidth={0.5} />

@@ -148,6 +148,25 @@
     overflow: hidden;
     content-visibility: auto;
     contain-intrinsic-size: auto 200px;
+
+    /* Default to spanning full width on mobile if no variable is set */
+    grid-column: span 12;
+    grid-row: auto;
+  }
+
+  @media (min-width: 768px) {
+    .bento-tile {
+      /* Use CSS variables passed from React for desktop layouts */
+      grid-column: span var(--col-span, 12);
+      grid-row: span var(--row-span, 1);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-tile {
+      grid-column: span var(--col-span, 12);
+      grid-row: span var(--row-span, 1);
+    }
   }
 
   .bento-tile::before {
@@ -160,6 +179,8 @@
         rgba(255, 255, 255, 0.4),
         rgba(255, 255, 255, 0.1));
     -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box,
       linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -355,6 +376,11 @@
     font-family: var(--font-mono);
     font-feature-settings: "tnum" 1;
   }
+
+  .mobile-menu-enter {
+    animation: menuSlideDown 0.3s ease-out forwards;
+    transform-origin: top center;
+  }
 }
 
 @layer utilities {
@@ -416,5 +442,17 @@
 
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes menuSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

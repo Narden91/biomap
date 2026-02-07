@@ -60,7 +60,7 @@ const Navbar = () => {
                     <div className="flex items-center lg:hidden">
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-sage-600 hover:bg-sage-50 focus:outline-none"
+                            className="inline-flex items-center justify-center p-3 rounded-md text-gray-500 hover:text-sage-600 hover:bg-sage-50 focus:outline-none"
                         >
                             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
                         </button>
@@ -70,7 +70,7 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="lg:hidden bg-white border-b border-sage-100">
+                <div className="lg:hidden bg-white border-b border-sage-100 mobile-menu-enter">
                     <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                         {navLinks.map((link) => (
                             <Link
