@@ -60,7 +60,7 @@ const Submission = () => {
                     </div>
 
                     <div className="mt-8 pt-8 border-t border-sage-100">
-                        <a href="https://cmt3.research.microsoft.com/CMTSRM/Submission/Summary/24686" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sage-600 hover:bg-sage-700 md:py-4 md:text-lg md:px-10 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200">
+                        <a href="https://cmt3.research.microsoft.com/BIOMAP2026" target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-sage-600 hover:bg-sage-700 md:py-4 md:text-lg md:px-10 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform duration-200">
                             Submit via CMT
                         </a>
 
