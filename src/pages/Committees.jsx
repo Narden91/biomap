@@ -66,12 +66,12 @@ const organizers = [
     {
         name: "Emanuele Nardone",
         role: "Program Co-Chair",
-        title: "Researcher",
+        title: "Postdoctoral Researcher",
         affiliation: "University of Cassino and Southern Lazio",
         imageUrl: `${import.meta.env.BASE_URL}nardone.jpg`,
         profileUrl: "https://narden91.github.io/curriculumwebsite/",
         email: "emanuele.nardone@unicas.it",
-        bio: "Received the Master Degree cum laude in Computer Science Engineering and the Ph.D. degree in Methods, Models and Technologies for Engineering from the University of Cassino and Southern Lazio, Italy. He is currently a Researcher in Computer Science in the Department of Electrical and Information Engineering. He is affiliated with the Artificial Intelligence and Data Analysis Lab and is a member of the Italian Association for Computer Vision, Pattern Recognition, and Machine Learning (CVPL). His research focuses on applying AI techniques to support the diagnosis of neurodegenerative diseases and addressing optimization problems with a particular emphasis on evolutionary algorithms."
+        bio: "Received the Master Degree cum laude in Computer Science Engineering and the Ph.D. degree in Methods, Models and Technologies for Engineering from the University of Cassino and Southern Lazio, Italy. He is currently a Postdoc Researcher in AI at University Of Eastern Finland. He is affiliated with the Artificial Intelligence and Data Analysis Lab and is a member of the Italian Association for Computer Vision, Pattern Recognition, and Machine Learning (CVPL). His research focuses on applying AI techniques to support the diagnosis of neurodegenerative diseases and addressing optimization problems with a particular emphasis on evolutionary algorithms."
     },
     {
         name: "Leonardo Vanneschi",
