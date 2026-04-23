@@ -20,7 +20,9 @@ const DateItem = memo(({ label, date, icon: Icon, ispassed }) => (
 DateItem.displayName = 'DateItem';
 
 const Dates = () => {
-    const submissionDate = "2026-05-01T23:59:59";
+    const submissionDate = "2026-05-15T23:59:59";
+    const previousSubmissionDateLabel = "May 1, 2026";
+    const currentSubmissionDateLabel = "May 15, 2026";
 
     const otherDates = [
         { label: "Notification of Acceptance", date: "June 10, 2026", icon: Bell },
@@ -52,7 +54,12 @@ const Dates = () => {
                         <h2 className="text-3xl md:text-5xl font-display font-bold text-gray-900 mb-2">
                             Paper Submission
                         </h2>
-                        <p className="text-xl text-sage-600 font-medium mb-8">May 1, 2026</p>
+                        <p className="mb-8 flex flex-wrap items-center justify-center gap-3 text-xl font-medium text-sage-600">
+                            <span className="text-gray-400 line-through decoration-2">{previousSubmissionDateLabel}</span>
+                            <span className="inline-flex items-center rounded-full bg-coral-50 px-4 py-1 text-coral-700">
+                                Extended to {currentSubmissionDateLabel}
+                            </span>
+                        </p>
 
                         <div className="mb-10">
                             <Countdown3D targetDate={submissionDate} />
