@@ -85,6 +85,22 @@ const organizers = [
     }
 ];
 
+const programCommitteeMembers = [
+    "Antonio Parziale",
+    "Bing Xue",
+    "Camilo De La Torre",
+    "Claudio De Stefano",
+    "Davide Farinati",
+    "Emanuele Nardone",
+    "Eric Medvet",
+    "Francesco Fontanella",
+    "Giovanni Pinna",
+    "Gloria Pietropolli",
+    "Leonardo Vanneschi",
+    "Tiziana D'Alessandro",
+    "Ying Bi"
+];
+
 const Committees = () => {
     return (
         <div className="pb-20">
@@ -107,10 +123,18 @@ const Committees = () => {
                     <div className="w-24 h-1.5 bg-gradient-to-r from-sage-400 to-coral-400 rounded-full"></div>
                 </div>
 
-                <div className="bg-white rounded-2xl p-8 border border-sage-100 shadow-sm">
-                    <p className="text-gray-500 text-center text-lg italic">
-                        Committee members to be announced
-                    </p>
+                <div className="bg-white rounded-2xl p-6 md:p-8 border border-sage-100 shadow-sm">
+                    <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        {programCommitteeMembers.map((member) => (
+                            <li
+                                key={member}
+                                className="flex items-center gap-3 rounded-xl border border-sage-100 bg-sage-50/60 px-4 py-3 text-gray-800"
+                            >
+                                <span className="h-2 w-2 rounded-full bg-coral-400 flex-shrink-0" aria-hidden="true" />
+                                <span className="font-medium">{member}</span>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </div>
