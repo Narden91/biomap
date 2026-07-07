@@ -1,14 +1,14 @@
-import React, { memo } from 'react';
+import { createElement, memo } from 'react';
 import PageHeader from '../components/PageHeader';
 import Countdown3D from '../components/Countdown3D';
 import { CalendarDays, Calendar, Bell, FileCheck, CalendarCheck, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 // Memoized date item component - Simplified for the list below
-const DateItem = memo(({ label, date, icon: Icon, ispassed }) => (
+const DateItem = memo(({ label, date, icon, ispassed }) => (
     <div className={`group relative overflow-hidden bg-white/80 rounded-xl p-6 border border-sage-100 hover:border-sage-300 transition-all duration-300 shadow-sm hover:shadow-md flex items-center gap-4 ${ispassed ? 'opacity-60 grayscale' : ''}`}>
         <div className="flex-shrink-0 p-3 bg-sage-50 text-sage-600 rounded-lg group-hover:bg-coral-50 group-hover:text-coral-600 transition-colors">
-            <Icon className="h-6 w-6" strokeWidth={2} />
+            {createElement(icon, { className: 'h-6 w-6', strokeWidth: 2 })}
         </div>
         <div>
             <h3 className="text-lg font-bold text-gray-900">{label}</h3>

@@ -1,5 +1,20 @@
-import React, { useState, useEffect, memo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect, memo } from 'react';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
+
+const calculateTimeLeft = (targetDate) => {
+    const difference = +new Date(targetDate) - +new Date();
+
+    if (difference <= 0) {
+        return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    return {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+    };
+};
 
 // Individual Flip Card Component
 const FlipCard = memo(({ digit, label }) => {
@@ -7,7 +22,7 @@ const FlipCard = memo(({ digit, label }) => {
         <div className="flex flex-col items-center mx-2 md:mx-4">
             <div className="relative w-16 h-20 md:w-24 md:h-32 bg-white rounded-lg shadow-xl overflow-hidden perspective-1000">
                 <AnimatePresence mode="popLayout">
-                    <motion.div
+                    <Motion.div
                         key={digit}
                         initial={{ rotateX: -90, opacity: 0 }}
                         animate={{ rotateX: 0, opacity: 1 }}
@@ -17,7 +32,7 @@ const FlipCard = memo(({ digit, label }) => {
                         style={{ transformOrigin: "center center" }}
                     >
                         {String(digit).padStart(2, '0')}
-                    </motion.div>
+                    </Motion.div>
                 </AnimatePresence>
 
                 {/* Visual split line for flip effect look */}
@@ -31,28 +46,11 @@ const FlipCard = memo(({ digit, label }) => {
 FlipCard.displayName = 'FlipCard';
 
 const Countdown3D = ({ targetDate }) => {
-    const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-    function calculateTimeLeft() {
-        const difference = +new Date(targetDate) - +new Date();
-        let timeLeft = {};
-
-        if (difference > 0) {
-            timeLeft = {
-                days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                minutes: Math.floor((difference / 1000 / 60) % 60),
-                seconds: Math.floor((difference / 1000) % 60),
-            };
-        } else {
-            timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
-        }
-        return timeLeft;
-    }
+    const [timeLeft, setTimeLeft] = useState(() => calculateTimeLeft(targetDate));
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setTimeLeft(calculateTimeLeft());
+            setTimeLeft(calculateTimeLeft(targetDate));
         }, 1000);
 
         return () => clearInterval(timer);
