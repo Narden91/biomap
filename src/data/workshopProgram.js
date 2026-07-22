@@ -2,7 +2,7 @@ export const workshopDetails = {
     date: 'Saturday, August 22, 2026',
     time: '9:00 - 13:00',
     venue: 'Louis Néel Building',
-    room: 'Room C8',
+    room: 'Room B5',
     city: 'Lyon, France',
     conference: 'ICPR 2026',
     conferenceName: '28th International Conference on Pattern Recognition',

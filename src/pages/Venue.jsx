@@ -1,6 +1,6 @@
 import React from 'react';
 import PageHeader from '../components/PageHeader';
-import { Map, MapPin, Plane, TrainFront, Bus, Globe, Navigation } from 'lucide-react';
+import { Map, MapPin, Plane, TrainFront, Bus, Globe, Navigation, ExternalLink } from 'lucide-react';
 
 const Venue = () => {
     return (
@@ -29,8 +29,15 @@ const Venue = () => {
                                 </div>
                                 <div>
                                     <h3 className="font-semibold text-white/90">Venue</h3>
-                                    <p className="text-sage-200">International Convention Center</p>
-                                    <p className="text-sage-400 text-sm">(Centre de Congrès de Lyon)</p>
+                                    <a
+                                        href="https://www.google.com/maps?ll=45.783714,4.882288&z=18&hl=fr-FR&gl=US&mapclient=apiv3&cid=1632147326884673947"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center gap-1 rounded text-sage-200 hover:text-white focus-ring"
+                                    >
+                                        Louis Néel Building
+                                        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                                    </a>
                                 </div>
                             </div>
 
@@ -39,10 +46,18 @@ const Venue = () => {
                                     <Navigation className="w-6 h-6 text-sage-300" />
                                 </div>
                                 <div>
-                                    <h3 className="font-semibold text-white/90">Address</h3>
-                                    <p className="text-sage-200">50 Quai Charles de Gaulle</p>
-                                    <p className="text-sage-200">69006 Lyon, France</p>
-                                    <p className="text-sage-400 text-sm mt-1">45.785021, 4.858137</p>
+                                    <h3 className="font-semibold text-white/90">Location</h3>
+                                    <p className="text-sage-200">Lyon, France</p>
+                                    <p className="mt-1 text-sm text-sage-400">45.783714, 4.882288</p>
+                                    <a
+                                        href="https://maps.app.goo.gl/TWPZUx7V5DuasWwt9"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="focus-ring mt-2 inline-flex items-center gap-1 rounded text-sm font-medium text-sage-200 hover:text-white"
+                                    >
+                                        Open in Google Maps
+                                        <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -57,8 +72,8 @@ const Venue = () => {
                             scrolling="no"
                             marginHeight="0"
                             marginWidth="0"
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=4.838137%2C45.775021%2C4.878137%2C45.795021&amp;layer=mapnik&amp;marker=45.785021%2C4.858137"
-                            title="Venue Map"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=4.862288%2C45.773714%2C4.902288%2C45.793714&amp;layer=mapnik&amp;marker=45.783714%2C4.882288"
+                            title="Louis Néel Building map"
                             className="w-full h-full"
                         ></iframe>
                         <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs text-slate-600 shadow-sm">
